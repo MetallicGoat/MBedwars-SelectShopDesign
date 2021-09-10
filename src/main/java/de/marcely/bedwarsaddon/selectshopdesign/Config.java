@@ -1,16 +1,37 @@
 package de.marcely.bedwarsaddon.selectshopdesign;
 
-import org.bukkit.inventory.ItemStack;
-
-import de.marcely.bedwars.Language;
-import de.marcely.bedwars.api.BedwarsAPI;
-import de.marcely.bedwars.api.Util;
-import de.marcely.bedwars.game.shop.ShopDesignData;
-import de.marcely.configmanager2.ConfigManager;
+import de.marcely.bedwars.api.game.shop.layout.ShopLayoutType;
+import de.marcely.bedwarsaddon.selectshopdesign.utils.xseries.XMaterial;
+import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 
 public class Config {
+
+    private static final BedwarsAddonSelectShopDesign plugin = BedwarsAddonSelectShopDesign.getInstance();
+
+    public void loadIcons(){
+        ConfigurationSection sect = plugin.getConfig().getConfigurationSection("Layouts");
+
+        assert sect != null;
+        sect.getKeys(false).forEach(key -> {
+
+            for (ShopLayoutType shopLayoutType:ShopLayoutType.values()){
+                if(shopLayoutType.name().equalsIgnoreCase(key)){
+                    String materialName = plugin.getConfig().getString("Layouts." + key + ".Display-Name");
+                    assert materialName != null;
+                    if(XMaterial.matchXMaterial(materialName).isPresent()) {
+                        Material material = XMaterial.matchXMaterial(materialName).get().parseMaterial();
+                        assert material != null;
+                        //BedwarsAddonSelectShopDesign.DESIGN_ICON.put(shopLayoutType, new ItemStack(material));
+                    }
+                }
+            }
+        });
+    }
+
+	/*
 	
-	public static ConfigManager cm = BedwarsAddonSelectShopDesign.bedwarsAddon.getConfig();
+	public static ConfigManager cm = BedwarsAddonSelectShopDesign.bedwarsAddon.getDataFolder();
 	
 	public static void load(){
 		cm.load();
@@ -75,4 +96,6 @@ public class Config {
 		
 		cm.save();
 	}
+
+	 */
 }

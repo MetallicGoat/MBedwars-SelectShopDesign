@@ -1,0 +1,74 @@
+# Change the design of the shop here
+# You are able to choose between:
+# Normal
+# HyPixel
+# HiveMC
+# GommeHD
+# Rewinside
+# Minesucht
+# BergwerkLABS
+# HyPixelV2
+
+# DO NOT change this
+Version: '{version}'
+
+GUI:
+  Height: 1
+  Title: 'Choose Shop Layout'
+  Selected-Layout: '&a&lSELECTED'
+
+# How the layouts are displayed in the GUI
+# If you have a custom shop layout, simply add it to this list
+Layouts:
+  Normal:
+    Display-Name: 'Normal'
+    Material: 'POTATO'
+    Slot: 1
+    Lore:
+      - "Default MBedwars Layout"
+  Hypixel:
+    Display-Name: 'Hypixel V1'
+    Material: 'POTATO'
+    Slot: 2
+    Lore:
+      - "Old Hypixel Layout"
+  HiveMC:
+    Display-Name: 'HiveMC'
+    Material: 'POTATO'
+    Slot: 3
+    Lore:
+      - "HiveMC's Layout"
+  GommeHD:
+    Display-Name: 'GommeHD'
+    Material: 'POTATO'
+    Slot: 4
+    Lore:
+      - "GommeHD Shop Layout"
+  Rewinside:
+    Display-Name: 'Rewinside'
+    Material: 'POTATO'
+    Slot: 5
+    Lore:
+      - "Rewinside Shop Layout"
+  BergwerkLABS:
+    Display-Name: 'BergwerkLABS'
+    Material: 'POTATO'
+    Slot: 6
+    Lore:
+      - 'BergwerkLABS Shop Layout'
+  HyPixel_V2:
+    Display-Name: 'Hypixel V2'
+    Material: 'POTATO'
+    Slot: 7
+    Lore:
+      - "Hypixel's Current Shop Layout"
+  Minesucht:
+    Display-Name: 'Minesucht'
+    Material: 'POTATO'
+    Slot: 8
+    Lore:
+      - "Minesucht shop layout"
+
+# Layouts here will not be added to the GUI
+Ignored-Layouts:
+  - ''
