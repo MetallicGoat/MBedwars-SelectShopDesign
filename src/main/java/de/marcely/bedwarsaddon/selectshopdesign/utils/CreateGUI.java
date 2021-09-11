@@ -1,7 +1,9 @@
 package de.marcely.bedwarsaddon.selectshopdesign.utils;
 
 import de.marcely.bedwars.api.game.shop.layout.ShopLayoutType;
+import de.marcely.bedwars.tools.gui.ClickListener;
 import de.marcely.bedwars.tools.gui.ClickableGUI;
+import de.marcely.bedwars.tools.gui.GUIItem;
 import de.marcely.bedwars.tools.gui.type.ChestGUI;
 import de.marcely.bedwarsaddon.selectshopdesign.BedwarsAddonSelectShopDesign;
 import de.marcely.bedwarsaddon.selectshopdesign.Message;
@@ -24,11 +26,8 @@ public class CreateGUI {
 
         for(final ShopLayoutType shopLayoutType: ShopLayoutType.values()) {
 
-            System.out.println(shopLayoutType);
-
-
             // ignore if it's beta or if the design has been disabled
-            //TODO
+            //TODO disable from config
             //BedwarsAddonSelectShopDesign.DESIGN_DISABLED.contains(shopLayoutType.name()) ||
             if (shopLayoutType == ShopLayoutType.PLUGIN)
                 continue;
@@ -58,7 +57,8 @@ public class CreateGUI {
             gui.open(player);
 
 
-            gui.addItem(is, (player1, b, b1) -> {
+            //TODO test this
+            gui.setItem(new GUIItem(is, (player12, b, b1) -> {
                 if(!BedwarsAddonSelectShopDesign.PLAYER_DESIGNS.containsKey(player)){
                     BedwarsAddonSelectShopDesign.PLAYER_DESIGNS.put(player, shopLayoutType);
 
@@ -81,7 +81,8 @@ public class CreateGUI {
                         //Util.playSound(player, Sound.LOBBY_VOTEARENA_ALREADYVOTED);
                     }
                 }
-            });
+
+            }), GUIAttributes.getIconSlot());
         }
         return gui;
     }

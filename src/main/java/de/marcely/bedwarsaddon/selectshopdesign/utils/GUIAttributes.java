@@ -52,6 +52,6 @@ public class GUIAttributes {
     }
 
     public int getIconSlot(){
-        return plugin.getConfig().getInt("Layouts." + key + ".Slot");
+        return plugin.getConfig().getInt("Layouts." + key + ".Slot") - 1;
     }
 }
