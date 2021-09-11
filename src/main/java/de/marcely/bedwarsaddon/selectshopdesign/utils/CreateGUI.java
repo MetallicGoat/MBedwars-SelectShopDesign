@@ -1,7 +1,6 @@
 package de.marcely.bedwarsaddon.selectshopdesign.utils;
 
 import de.marcely.bedwars.api.game.shop.layout.ShopLayoutType;
-import de.marcely.bedwars.tools.gui.ClickListener;
 import de.marcely.bedwars.tools.gui.ClickableGUI;
 import de.marcely.bedwars.tools.gui.GUIItem;
 import de.marcely.bedwars.tools.gui.type.ChestGUI;
@@ -54,10 +53,6 @@ public class CreateGUI {
             is.setItemMeta(meta);
 
             // add item to gui
-            gui.open(player);
-
-
-            //TODO test this
             gui.setItem(new GUIItem(is, (player12, b, b1) -> {
                 if(!BedwarsAddonSelectShopDesign.PLAYER_DESIGNS.containsKey(player)){
                     BedwarsAddonSelectShopDesign.PLAYER_DESIGNS.put(player, shopLayoutType);
