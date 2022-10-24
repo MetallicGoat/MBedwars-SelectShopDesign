@@ -1,6 +1,5 @@
 package de.marcely.bedwars.selectshopdesign;
 
-import de.marcely.bedwars.api.BedwarsAPI;
 import de.marcely.bedwars.api.GameAPI;
 import de.marcely.bedwars.api.game.shop.layout.ShopLayout;
 import de.marcely.bedwars.api.game.shop.layout.ShopLayoutType;
@@ -20,7 +19,6 @@ import java.util.List;
 public class Config {
 
     public static String guiTitle = "Choose Shop Layout";
-    public static int guiHeight = 1;
     public static String selectedLayout = "&a&lSELECTED";
 
     public static List<ShopLayoutAttributes> shopLayouts = new ArrayList<>();
@@ -59,24 +57,24 @@ public class Config {
             e.printStackTrace();
         }
 
+        guiTitle = config.getString("gui.title", guiTitle);
+        selectedLayout = config.getString("selected-layout", selectedLayout);
 
         shopLayouts.clear();
         final ConfigurationSection layoutsSection = config.getConfigurationSection("layouts");
 
         if (layoutsSection != null) {
             for (String layoutId : layoutsSection.getKeys(false)) {
-                final ShopLayout layout = BedwarsAPI.getGameAPI().getShopLayout(layoutId);
                 final ConfigurationSection layoutSection = layoutsSection.getConfigurationSection(layoutId);
 
-                if (layout == null || layoutSection == null)
+                if (layoutSection == null)
                     continue;
 
                 final ShopLayoutAttributes layoutAttributes = new ShopLayoutAttributes(
                         layoutId,
                         config.getString("display-name", "UNNAMED"),
                         Helper.get().parseItemStack(config.getString("material", "stone")),
-                        config.getStringList("lore"),
-                        config.getInt("slot", -1)
+                        config.getStringList("lore")
                 );
 
                 shopLayouts.add(layoutAttributes);
@@ -109,7 +107,6 @@ public class Config {
 
         config.addComment("GUI Settings");
         config.set("gui.title", guiTitle);
-        config.set("gui.height", guiHeight);
         config.set("selected-layout", selectedLayout);
 
         config.addEmptyLine();
@@ -120,7 +117,6 @@ public class Config {
 
             config.set(path + "display-name", layoutAttributes.getLayoutName());
             config.set(path + "material", Helper.get().composeItemStack(layoutAttributes.getIcon()));
-            config.set(path + "slot", layoutAttributes.getPosition());
             config.set(path + "lore", layoutAttributes.getLore());
         }
 
@@ -130,60 +126,52 @@ public class Config {
 
     private static void loadDefaults() {
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.HYPIXEL.name(),
-                ShopLayoutType.HYPIXEL.name(),
+                ShopLayoutType.HYPIXEL.name().toLowerCase(),
+                ShopLayoutType.HYPIXEL.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("Older Hypixel Layout"),
-                1
+                Collections.singletonList("Older Hypixel Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.HYPIXEL_V2.name(),
-                ShopLayoutType.HYPIXEL_V2.name(),
+                ShopLayoutType.HYPIXEL_V2.name().toLowerCase(),
+                ShopLayoutType.HYPIXEL_V2.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("Modern Hypixel Layout"),
-                2
+                Collections.singletonList("Modern Hypixel Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.HIVEMC.name(),
-                ShopLayoutType.HIVEMC.name(),
+                ShopLayoutType.HIVEMC.name().toLowerCase(),
+                ShopLayoutType.HIVEMC.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("HiveMC Layout"),
-                3
+                Collections.singletonList("HiveMC Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.GOMMEHD.name(),
-                ShopLayoutType.GOMMEHD.name(),
+                ShopLayoutType.GOMMEHD.name().toLowerCase(),
+                ShopLayoutType.GOMMEHD.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("GommeHD Layout"),
-                4
+                Collections.singletonList("GommeHD Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.BERGWERKLABS.name(),
-                ShopLayoutType.BERGWERKLABS.name(),
+                ShopLayoutType.BERGWERKLABS.name().toLowerCase(),
+                ShopLayoutType.BERGWERKLABS.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("BergwerkLabs Layout"),
-                4
+                Collections.singletonList("BergwerkLabs Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.MINESUCHT.name(),
-                ShopLayoutType.MINESUCHT.name(),
+                ShopLayoutType.MINESUCHT.name().toLowerCase(),
+                ShopLayoutType.MINESUCHT.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("Minesucht Layout"),
-                6
+                Collections.singletonList("Minesucht Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.REWINSIDE.name(),
-                ShopLayoutType.REWINSIDE.name(),
+                ShopLayoutType.REWINSIDE.name().toLowerCase(),
+                ShopLayoutType.REWINSIDE.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("Rewinside Layout"),
-                7
+                Collections.singletonList("Rewinside Layout")
         ));
         shopLayouts.add(new ShopLayoutAttributes(
-                ShopLayoutType.NORMAL.name(),
-                ShopLayoutType.NORMAL.name(),
+                ShopLayoutType.NORMAL.name().toLowerCase(),
+                ShopLayoutType.NORMAL.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("Normal Layout"),
-                8
+                Collections.singletonList("Normal Layout")
         ));
     }
 }

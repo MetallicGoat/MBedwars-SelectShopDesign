@@ -12,7 +12,6 @@ public class ShopLayoutAttributes {
     @Getter private final String id;
     @Getter private final String layoutName;
     @Getter private final List<String> lore;
-    @Getter private final int position;
 
     private final ItemStack icon;
 
@@ -20,14 +19,12 @@ public class ShopLayoutAttributes {
             String id,
             String layoutName,
             ItemStack icon,
-            List<String> lore,
-            int position){
+            List<String> lore){
 
         this.id = id;
         this.layoutName = layoutName;
         this.icon = icon != null ? icon : new ItemStack(Material.STONE);
         this.lore = lore != null ? lore : Collections.singletonList("Missing Lore");
-        this.position = position;
     }
 
     public ItemStack getIcon(){
