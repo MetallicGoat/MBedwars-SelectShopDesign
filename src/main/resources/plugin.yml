@@ -1,8 +1,8 @@
 website: http://marcely.de
 version: 2.0.0
-name: MBedwars_SelectShopDesign
-author: Marcely1199
-main: de.marcely.bedwarsaddon.selectshopdesign.BedwarsAddonSelectShopDesign
+name: SelectShopDesignAddon
+authors: [Marcely1199, MetallicGoat]
+main: de.marcely.bedwars.selectshopdesign.SelectShopDesignPlugin
 api-version: 1.13
 description: This is an add-on for Marcely's Bedwars
 depend: [MBedwars]

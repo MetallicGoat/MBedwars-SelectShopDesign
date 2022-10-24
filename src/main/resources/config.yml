@@ -10,65 +10,68 @@
 # HyPixelV2
 
 # DO NOT change this
-Version: '{version}'
+file-version: 1
 
-GUI:
-  Height: 1
-  Title: 'Choose Shop Layout'
-  Selected-Layout: '&a&lSELECTED'
+gui:
+  height: 1
+  title: 'Choose Shop Layout'
+  selected-layout: '&a&lSELECTED'
 
 # How the layouts are displayed in the GUI
 # If you have a custom shop layout, simply add it to this list
-Layouts:
+layouts:
   Normal:
-    Display-Name: 'Normal'
-    Material: 'POTATO'
-    Slot: 1
-    Lore:
+    display-name: 'Normal'
+    material: 'POTATO'
+    slot: 1
+    lore:
       - "Default MBedwars Layout"
-  Hypixel:
-    Display-Name: 'Hypixel V1'
-    Material: 'POTATO'
-    Slot: 2
-    Lore:
-      - "Old Hypixel Layout"
-  HiveMC:
-    Display-Name: 'HiveMC'
-    Material: 'POTATO'
-    Slot: 3
-    Lore:
-      - "HiveMC's Layout"
-  GommeHD:
-    Display-Name: 'GommeHD'
-    Material: 'POTATO'
-    Slot: 4
-    Lore:
-      - "GommeHD Shop Layout"
-  Rewinside:
-    Display-Name: 'Rewinside'
-    Material: 'POTATO'
-    Slot: 5
-    Lore:
-      - "Rewinside Shop Layout"
-  BergwerkLABS:
-    Display-Name: 'BergwerkLABS'
-    Material: 'POTATO'
-    Slot: 6
-    Lore:
-      - 'BergwerkLABS Shop Layout'
-  HyPixel_V2:
-    Display-Name: 'Hypixel V2'
-    Material: 'POTATO'
-    Slot: 7
-    Lore:
-      - "Hypixel's Current Shop Layout"
-  Minesucht:
-    Display-Name: 'Minesucht'
-    Material: 'POTATO'
-    Slot: 8
-    Lore:
-      - "Minesucht shop layout"
 
-# Layouts here will not be added to the GUI
-Ignored-Layouts:
-  - ''
+  Hypixel:
+    display-name: 'Hypixel V1'
+    material: 'POTATO'
+    slot: 2
+    lore:
+      - "Old Hypixel Layout"
+
+  HiveMC:
+    display-name: 'HiveMC'
+    Material: 'POTATO'
+    slot: 3
+    lore:
+      - "HiveMC's Layout"
+
+  GommeHD:
+    display-name: 'GommeHD'
+    material: 'POTATO'
+    slot: 4
+    lore:
+      - "GommeHD Shop Layout"
+
+  Rewinside:
+    display-name: 'Rewinside'
+    material: 'POTATO'
+    slot: 5
+    lore:
+      - "Rewinside Shop Layout"
+
+  BergwerkLABS:
+    display-name: 'BergwerkLABS'
+    material: 'POTATO'
+    slot: 6
+    lore:
+      - 'BergwerkLABS Shop Layout'
+
+  HyPixel_V2:
+    display-name: 'Hypixel V2'
+    material: 'POTATO'
+    slot: 7
+    lore:
+      - "Hypixel's Current Shop Layout"
+
+  Minesucht:
+    display-name: 'Minesucht'
+    material: 'POTATO'
+    slot: 8
+    lore:
+      - "Minesucht shop layout"
