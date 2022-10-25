@@ -30,9 +30,10 @@ public class SelectShopDesignPlugin extends JavaPlugin {
 		Config.load(this);
 
 		addon.registerMessageMappings();
+		addon.registerCommands();
 
 		// register item
-		BedwarsAPI.getGameAPI().registerLobbyItemHandler(SelectShopDesignLobbyItem.getHandler(this));
+		BedwarsAPI.getGameAPI().registerLobbyItemHandler(CustomLobbyItem.getHandler(this));
 		
 		// event
 		Bukkit.getPluginManager().registerEvents(new Listener(){

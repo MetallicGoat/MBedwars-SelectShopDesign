@@ -13,13 +13,20 @@ import org.bukkit.inventory.ItemStack;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Config {
 
-    public static String guiTitle = "Choose Shop Layout";
-    public static String selectedLayout = "&a&lSELECTED";
+    public static String guiTitle = "%gui_title%";
+    public static String selectedLayout = "%design_choose%";
+
+    public static String selectedLayoutTitle = "&7{design}";
+    public static List<String> selectedLayoutLore = Arrays.asList("", "%design_selected%", "", "&7{description}");
+
+    public static String unselectedLayoutTitle = "&7{design}";
+    public static List<String> unselectedLayoutLore = Arrays.asList("", "%design_unselected%", "", "&7{description}");
 
     public static List<ShopLayoutAttributes> shopLayouts = new ArrayList<>();
 
@@ -58,7 +65,15 @@ public class Config {
         }
 
         guiTitle = config.getString("gui.title", guiTitle);
-        selectedLayout = config.getString("selected-layout", selectedLayout);
+        selectedLayout = config.getString("gui.selected-layout", selectedLayout);
+
+        selectedLayoutTitle = config.getString("gui.selected-layout-title");
+        if(config.contains("gui.selected-layout-lore"))
+            selectedLayoutLore = config.getStringList("gui.selected-layout-lore");
+
+        selectedLayoutTitle = config.getString("gui.unselected-layout-title");
+        if(config.contains("gui.unselected-layout-lore"))
+            selectedLayoutLore = config.getStringList("gui.unselected-layout-lore");
 
         shopLayouts.clear();
         final ConfigurationSection layoutsSection = config.getConfigurationSection("layouts");
@@ -74,7 +89,7 @@ public class Config {
                         layoutId,
                         config.getString("display-name", "UNNAMED"),
                         Helper.get().parseItemStack(config.getString("material", "stone")),
-                        config.getStringList("lore")
+                        config.getString("lore", "Missing Description")
                 );
 
                 shopLayouts.add(layoutAttributes);
@@ -107,7 +122,11 @@ public class Config {
 
         config.addComment("GUI Settings");
         config.set("gui.title", guiTitle);
-        config.set("selected-layout", selectedLayout);
+        config.set("gui.selected-layout", selectedLayout);
+        config.set("gui.selected-layout-title", selectedLayoutTitle);
+        config.set("gui.selected-layout-lore", selectedLayoutLore);
+        config.set("gui.unselected-layout-title", unselectedLayoutTitle);
+        config.set("gui.unselected-layout-lore", unselectedLayoutLore);
 
         config.addEmptyLine();
 
@@ -117,7 +136,7 @@ public class Config {
 
             config.set(path + "display-name", layoutAttributes.getLayoutName());
             config.set(path + "material", Helper.get().composeItemStack(layoutAttributes.getIcon()));
-            config.set(path + "lore", layoutAttributes.getLore());
+            config.set(path + "lore", layoutAttributes.getDescription());
         }
 
         // save
@@ -128,50 +147,50 @@ public class Config {
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.HYPIXEL.name().toLowerCase(),
                 ShopLayoutType.HYPIXEL.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("Older Hypixel Layout")
+                Helper.get().parseItemStack("APPLE"),
+                "Older Hypixel Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.HYPIXEL_V2.name().toLowerCase(),
                 ShopLayoutType.HYPIXEL_V2.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("Modern Hypixel Layout")
+                Helper.get().parseItemStack("GOLDEN_APPLE"),
+                "Modern Hypixel Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.HIVEMC.name().toLowerCase(),
                 ShopLayoutType.HIVEMC.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("HiveMC Layout")
+                Helper.get().parseItemStack("BLAZE_POWDER"),
+                "HiveMC Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.GOMMEHD.name().toLowerCase(),
                 ShopLayoutType.GOMMEHD.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("GommeHD Layout")
+                Helper.get().parseItemStack("BONE"),
+                "GommeHD Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.BERGWERKLABS.name().toLowerCase(),
                 ShopLayoutType.BERGWERKLABS.getLayout().getName(),
                 new ItemStack(Material.STONE),
-                Collections.singletonList("BergwerkLabs Layout")
+                "BergwerkLabs Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.MINESUCHT.name().toLowerCase(),
                 ShopLayoutType.MINESUCHT.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("Minesucht Layout")
+                Helper.get().parseItemStack("BOOK"),
+                "Minesucht Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.REWINSIDE.name().toLowerCase(),
                 ShopLayoutType.REWINSIDE.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("Rewinside Layout")
+                Helper.get().parseItemStack("GLOWSTONE_DUST"),
+                "Rewinside Layout"
         ));
         shopLayouts.add(new ShopLayoutAttributes(
                 ShopLayoutType.NORMAL.name().toLowerCase(),
                 ShopLayoutType.NORMAL.getLayout().getName(),
-                new ItemStack(Material.STONE),
-                Collections.singletonList("Normal Layout")
+                Helper.get().parseItemStack("EGG"),
+                "Normal Layout"
         ));
     }
 }

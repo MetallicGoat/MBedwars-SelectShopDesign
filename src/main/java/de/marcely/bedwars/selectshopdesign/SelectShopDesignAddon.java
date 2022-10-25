@@ -1,6 +1,9 @@
 package de.marcely.bedwars.selectshopdesign;
 
 import de.marcely.bedwars.api.BedwarsAddon;
+import de.marcely.bedwars.api.command.CommandHandler;
+import de.marcely.bedwars.api.command.CommandsCollection;
+import de.marcely.bedwars.api.command.SubCommand;
 import de.marcely.bedwars.api.message.DefaultMessageMappings;
 import de.marcely.bedwars.api.message.MessageAPI;
 
@@ -26,5 +29,27 @@ public class SelectShopDesignAddon extends BedwarsAddon {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    void registerCommands(){
+        addCommand(
+                getCommandsRoot(),
+                "selectshopdesign",
+                false,
+                "",
+                new OpenCommand(plugin),
+                "selectshop", "ssd");
+    }
+
+    private void addCommand(CommandsCollection parent, String name, boolean onlyPlayers, String usage, CommandHandler handler, String... aliases){
+        final SubCommand cmd = parent.addCommand(name);
+
+        if(cmd == null)
+            return;
+
+        cmd.setOnlyForPlayers(onlyPlayers);
+        cmd.setUsage(usage);
+        cmd.setHandler(handler);
+        cmd.setAliases(aliases);
     }
 }

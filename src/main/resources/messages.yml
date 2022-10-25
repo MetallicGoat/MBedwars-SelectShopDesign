@@ -1,4 +1,3 @@
-GUI_TITLE: ChatColor.AQUA + "Select Shop Design"
-DESIGN_CHOOSE: ChatColor.GREEN + "SELECTED"
-DESIGN_CHOOSE_ALREADY: ChatColor.RED + "You already selected {design}!"
-DESIGN_CHOSEN: ChatColor.GOLD + "You selected this design"
+GUI_TITLE: "Select Shop Design"
+DESIGN_SELECTED: "&aSelected"
+DESIGN_UNSELECTED: "&eClick to select"
